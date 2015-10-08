@@ -1,35 +1,34 @@
 package shape;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Point;
 import java.awt.geom.Ellipse2D;
+import java.awt.geom.Point2D;
 
 public class MyOval implements AbstractShape {
 	private Ellipse2D.Float oval;
-	private Point startPoint, endPoint;
+	private Point2D.Float startPoint, endPoint;
 	
-	public MyOval(Point p) {
+	public MyOval(Point2D.Float point) {
 		oval = new Ellipse2D.Float();
-		startPoint = new Point(0, 0);
-		endPoint = new Point(0, 0);
-		setStart(p);
+		startPoint = new Point2D.Float(0, 0);
+		endPoint = new Point2D.Float(0, 0);
+		setStart(point);
 	}
 
 	@Override
-	public void setStart(Point pt) {
-		startPoint = pt;
-		oval.setFrame(pt.getX(), pt.getY(), endPoint.getX() ,endPoint.getY());
+	public void setStart(Point2D.Float point) {
+		startPoint = point;
+		oval.setFrame(point.getX(), point.getY(), endPoint.getX() ,endPoint.getY());
 	}
 
 	@Override
-	public void setEnd(Point pt) {
-		endPoint = pt;
-		oval.setFrameFromDiagonal(startPoint.getX(), startPoint.getY() ,pt.getX() ,pt.getY());
+	public void setEnd(Point2D.Float point) {
+		endPoint = point;
+		oval.setFrameFromDiagonal(startPoint.getX(), startPoint.getY(), point.getX(), point.getY());
 	}
 
 	@Override
 	public void draw(Graphics g) {
-		//g.setColor(Color.green);
 		((Graphics2D) g).draw(oval);
 	}
 	

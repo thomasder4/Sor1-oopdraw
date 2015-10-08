@@ -2,38 +2,36 @@ package shape;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Point;
+import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
 public class MyRect implements AbstractShape {
 	
 	private Rectangle2D.Float rect;
-	private Point startPoint, endPoint;
+	private Point2D.Float startPoint, endPoint;
 	
-	public MyRect(Point p) {
+	public MyRect(Point2D.Float p) {
 		rect = new Rectangle2D.Float();
-		endPoint = new Point(0, 0);
+		endPoint = new Point2D.Float(0, 0);
 		setStart(p);
 	}
 
 	@Override
-	public void setStart(Point pt) {
-		startPoint = pt;
-		rect.setRect(pt.getX(), pt.getY(), endPoint.getX(), endPoint.getY());
+	public void setStart(Point2D.Float point) {
+		startPoint = point;
+		rect.setRect(point.getX(), point.getY(), endPoint.getX(), endPoint.getY());
 	}
 
 	@Override
-	public void setEnd(Point pt) {
-		endPoint = pt;
-		rect.setFrameFromDiagonal(startPoint, pt);
+	public void setEnd(Point2D.Float point) {
+		endPoint = point;
+		rect.setFrameFromDiagonal(startPoint, point);
 		
 	}
 
 	@Override
 	public void draw(Graphics g) {
-		//g.setColor(Color.blue);
 		((Graphics2D) g).draw(rect);
-		
 	}
 
 }

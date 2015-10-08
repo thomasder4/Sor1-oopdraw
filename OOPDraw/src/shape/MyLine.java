@@ -1,27 +1,27 @@
 package shape;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Point;
 import java.awt.geom.Line2D;
+import java.awt.geom.Point2D;
 
 public class MyLine implements AbstractShape {
 	
 	private Line2D.Float line;
 
-	public MyLine(Point p) {
+	public MyLine(Point2D.Float point) {
 		line = new Line2D.Float();
-		setStart(p);
-		setEnd(p);
+		setStart(point);
+		setEnd(point);
 	}
 	
 	@Override
-	public void setStart(Point pt) {
-		line.setLine(pt.getX(), pt.getY(), line.getX2(), line.getY2());
+	public void setStart(Point2D.Float point) {
+		line.setLine(point.getX(), point.getY(), line.getX2(), line.getY2());
 	}
 
 	@Override
-	public void setEnd(Point pt) {
-		line.setLine(line.getX1(), line.getY1(), pt.getX(),  pt.getY());
+	public void setEnd(Point2D.Float point) {
+		line.setLine(line.getX1(), line.getY1(), point.getX(), point.getY());
 	}
 
 	@Override

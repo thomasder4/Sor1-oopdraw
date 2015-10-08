@@ -1,5 +1,5 @@
 package composer;
-import java.awt.Point;
+import java.awt.geom.Point2D;
 
 import shape.AbstractShape;
 import shape.MyRect;
@@ -10,21 +10,23 @@ public class RectComposer implements ShapeComposer {
 	private MyRect rect;
 	
 	@Override
-	public AbstractShape create(Point p) {
-		rect = new MyRect(p);
+	public AbstractShape create(Point2D.Float point) {
+		rect = new MyRect(point);
 		return rect;
 		
 	}
 
 	@Override
-	public void expand(Point p) {
-		rect.setEnd(p);
+	public void expand(Point2D.Float point) {
+		rect.setEnd(point);
 	}
 
 	@Override
-	public void complete(Point p) {
-		rect.setEnd(p);
+	public void complete(Point2D.Float point) {
+		rect.setEnd(point);
 	}
+
+
 
 
 	
